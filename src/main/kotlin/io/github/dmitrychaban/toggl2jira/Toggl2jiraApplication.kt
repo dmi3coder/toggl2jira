@@ -14,7 +14,7 @@ class Toggl2jiraApplication : CommandLineRunner {
     lateinit var api: TogglApi
 
     override fun run(vararg args: String?) {
-        var workspaces = api.context.block()!!.workspaces
+        val workspaces = api.context.block()!!.workspaces
         println(api.currentWorkspace)
         api.currentWorkspace = workspaces.first()
         println(api.getWeekReport(DateTime.now()).block())
