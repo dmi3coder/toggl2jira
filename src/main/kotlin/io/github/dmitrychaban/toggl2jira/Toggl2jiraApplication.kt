@@ -1,7 +1,7 @@
 package io.github.dmitrychaban.toggl2jira
 
 import io.github.dmitrychaban.java_toggl_sdk_light.TogglApi
-import io.github.dmitrychaban.java_toggl_sdk_light.TogglApiBuilder
+import org.joda.time.DateTime
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -14,7 +14,10 @@ class Toggl2jiraApplication : CommandLineRunner {
     lateinit var api: TogglApi
 
     override fun run(vararg args: String?) {
-        println(api.context.block()!!.fullname)
+        var workspaces = api.context.block()!!.workspaces
+        println(api.currentWorkspace)
+        api.currentWorkspace = workspaces.first()
+        println(api.getWeekReport(DateTime.now()).block())
     }
 }
 
