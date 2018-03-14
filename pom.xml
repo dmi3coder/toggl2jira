@@ -135,6 +135,11 @@
             <artifactId>java_toggl_sdk_light</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>io.github.dmitrychaban</groupId>
+            <artifactId>java_jira_sdk_light</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 	<build>
