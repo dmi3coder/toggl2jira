@@ -1,3 +1,6 @@
 [submodule "java_toggl_sdk_light"]
 	path = java_toggl_sdk_light
 	url = https://github.com/dmitrychaban/java-toggl-sdk-light.git
+[submodule "java_jira_sdk_light"]
+	path = java_jira_sdk_light
+	url = https://github.com/dmitrychaban/java-jira-sdk-light.git
