@@ -20,6 +20,7 @@
 
 	<modules>
 		<module>java_toggl_sdk_light</module>
+		<module>java_jira_sdk_light</module>
 	</modules>
 
 	<properties>
