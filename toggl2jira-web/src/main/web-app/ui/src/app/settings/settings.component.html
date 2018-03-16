@@ -1,3 +1,13 @@
-<p>
-  settings works!
-</p>
+<form>
+  <div class="form-group">
+    <label for="togglTokenInput">Toggl token</label>
+    <input #togglTokenInput type="text" class="form-control" (keyup)="setTogglToken($event)" id="togglTokenInput" aria-describedby="togglHelp" placeholder="Enter Toggl token">
+    <small id="togglHelp" class="form-text text-muted">You can get Toggl token in </small>
+    <p>{{togglToken}}</p>
+  </div>
+  <div class="form-group">
+    <label for="jiraTokenInput">Jira token</label>
+    <input #jiraTokenInput type="text" class="form-control" (keyup)="setJiraToken($event)" id="jiraTokenInput" placeholder="Enter Jira token">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+</form>
