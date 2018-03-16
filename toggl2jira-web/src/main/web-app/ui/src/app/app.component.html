@@ -1,28 +1,25 @@
 <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-  <button class="navbar-toggler navbar-toggler-right" type="button"
-          data-toggle="collapse" data-target="#navbarCollapse"
-          aria-controls="navbarCollapse" aria-expanded="false"
-          aria-label="Toggle navigation">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">Toggl2Jira
-    <span *ngIf="principal.isAdmin()">Admin</span></a>
+  <a class="navbar-brand" href="#">Toggl2Jira</a>
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="converter" routerLinkActive="active">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="settings" routerLinkActive="active">Settings</a>
+      </li>
     </ul>
-    <button *ngIf="principal.authenticated" type="button"
-            class="btn btn-link" (click)="onLogout()">Logout</button>
   </div>
 </nav>
 
-<!--<div class="jumbotron">-->
-  <!--<div class="container">-->
-    <!--<h1>Toggl2Jira</h1>-->
-    <!--<p *ngIf="!principal.authenticated" class="lead">-->
-      <!--Anyone can view the books.-->
-    <!--</p>-->
-    <!--<p *ngIf="principal.authenticated && !principal.isAdmin()" class="lead">-->
-      <!--Users can view and create ratings</p>-->
-    <!--<p *ngIf="principal.isAdmin()"  class="lead">Admins can do anything!</p>-->
+<div class="container">
+  <router-outlet></router-outlet>
+  <!--<div class="jumbotron">-->
+    <!--<h1>Navbar example</h1>-->
+    <!--<p class="lead">This example is a quick exercise to illustrate how fixed to top navbar works. As you scroll, it will remain fixed to the top of your browser's viewport.</p>-->
+    <!--<a class="btn btn-lg btn-primary" href="../../components/navbar/" role="button">View navbar docs &raquo;</a>-->
   <!--</div>-->
-<!--</div>-->
+</div>
