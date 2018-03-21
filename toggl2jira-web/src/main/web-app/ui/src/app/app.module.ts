@@ -33,6 +33,7 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
+  exports: [RouterModule],
   providers: [
     HttpClientModule,
     TogglService
