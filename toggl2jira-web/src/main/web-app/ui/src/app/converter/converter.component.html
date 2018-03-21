@@ -1,3 +1,23 @@
-<p>
-  converter works!
-</p>
+<div >
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card bg-dark border-success mb-3" *ngFor="let timer of elements"
+      >
+        <div class="card-body m-2">
+          <a data-target="#logs" data-toggle="collapse">{{timer.description}}</a>
+
+          <div class="float-right text-muted">{{timer.dur}}</div>
+          <div id="logs" class="collapse">testtesttest</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card bg-dark border-success mb-3" *ngFor="let i of [1,2,3]">
+        <div class="card-body m-2">
+          Jira card {{i}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
