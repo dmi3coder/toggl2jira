@@ -12,11 +12,6 @@ import reactor.core.publisher.Flux
 @SpringBootApplication
 class Toggl2jiraApplication : CommandLineRunner {
 
-    @Autowired
-    lateinit var api: TogglApi
-    @Autowired
-    lateinit var jiraApi: JiraApi
-
     override fun run(vararg args: String?) {
 //        val project = jiraApi.getJiraProjects().flatMapMany { Flux.fromIterable(it) }.filter { it.name == "MyProject" }.collectList().block()!!.first()
 //        val workspaces = api.context.block()!!.workspaces
