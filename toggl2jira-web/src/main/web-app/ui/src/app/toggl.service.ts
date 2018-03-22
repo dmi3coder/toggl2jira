@@ -16,7 +16,7 @@ export class TogglService {
   }
 
 
-  getTogglTimers(): Observable<any> {
+  getTogglTimers(): Observable<TogglTimer[]> {
     return Observable.create(observer => {
       this.localStorage.getItem('togglToken').subscribe(token => {
         console.log(token);
