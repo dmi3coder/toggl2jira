@@ -29,8 +29,6 @@ class SummaryController {
     @GetMapping
     fun getSummary(): Mono<List<Pair<Issue,List<Timer>>>> {
         return Mono.create {
-            var jiraApi = DefaultJiraApi("djCvQ3mCbH4wnflbcVgPE427", "dchaban@s-pro.io")
-            var togglApi = TogglApiBuilder.with("6c9897b6435b330a2f79e6ddcd5073e0").build()
 
             val projects: List<JiraProject> = jiraApi.getJiraProjects().flatMapMany { Flux.fromIterable(it) }.collectList().block()!!
             val workspaces = togglApi.context.block()!!.workspaces
