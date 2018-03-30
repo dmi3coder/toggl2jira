@@ -11,7 +11,7 @@ import {Inject} from "@angular/compiler/src/core";
 })
 @Injectable()
 export class ConverterComponent implements OnInit {
-  elements: [TogglTimer];
+  elements: TogglTimer[];
 
   constructor(private service: TogglService) {
     service.getTogglTimers().subscribe(items => {
