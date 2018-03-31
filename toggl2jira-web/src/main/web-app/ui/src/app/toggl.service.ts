@@ -1,37 +1,48 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from "rxjs/Observable";
 import {TogglTimer} from "./toggl-timer";
-import {AsyncLocalStorage} from "angular-async-local-storage";
-import {SettingsComponent} from "./settings/settings.component";
 
 @Injectable()
 export class TogglService {
   private togglUrl = 'http://localhost:8083/toggl';
+  private summaryUrl = 'http://localhost:8083/summary';
 
-  constructor(
-    private http: HttpClient,
-    protected localStorage: AsyncLocalStorage) {
+  constructor(private http: HttpClient) {
 
   }
 
 
   getTogglTimers(): Observable<TogglTimer[]> {
-    return Observable.create(observer => {
-      this.localStorage.getItem('togglToken').subscribe(token => {
-        console.log(token);
-        const headerDict = {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'togglToken': token
-        };
+    let togglToken = localStorage.getItem('togglToken');
+    console.log(togglToken);
+    const headerDict = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'togglToken': togglToken
+    };
 
-        const requestOptions = {
-          headers: new HttpHeaders(headerDict),
-        };
-        this.http.get<TogglTimer[]>(this.togglUrl, requestOptions).subscribe(observer)
-      });
-    });
+    const requestOptions = {
+      headers: new HttpHeaders(headerDict),
+    };
+    return this.http.get<TogglTimer[]>(this.togglUrl, requestOptions)
+  }
+
+  getSummary(): Observable<object[]> {
+    let togglToken = localStorage.getItem('togglToken');
+    let jiraToken = localStorage.getItem('jiraToken');
+    const headerDict = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'togglToken': togglToken,
+      'jiraToken': jiraToken,
+      'jiraMail': 'dchaban@s-pro.io'
+    };
+    console.log('jiraToken', jiraToken);
+    const requestOptions = {
+      headers: new HttpHeaders(headerDict),
+    };
+    return this.http.get<TogglTimer[]>(this.summaryUrl, requestOptions)
   }
 
 }

@@ -1,6 +1,4 @@
 import {Component, ElementRef, Injectable, OnInit, ViewChild} from '@angular/core';
-import {logger} from "codelyzer/util/logger";
-import {AsyncLocalStorage} from "angular-async-local-storage";
 
 const TOGGL_TOKEN_KEY: string = "togglToken";
 const JIRA_TOKEN_KEY: string = "jiraToken";
@@ -15,24 +13,20 @@ export class SettingsComponent implements OnInit {
   @ViewChild('togglTokenInput') togglTokenInput: ElementRef;
   @ViewChild('jiraTokenInput') jiraTokenInput: ElementRef;
 
-  constructor(protected localStorage: AsyncLocalStorage) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.localStorage.getItem(TOGGL_TOKEN_KEY).subscribe((tokenValue) => {
-      this.togglTokenInput.nativeElement.value = tokenValue;
-    });
-    this.localStorage.getItem(JIRA_TOKEN_KEY).subscribe((tokenValue) => {
-      this.jiraTokenInput.nativeElement.value = tokenValue;
-    });
+    this.togglTokenInput.nativeElement.value = localStorage.getItem(TOGGL_TOKEN_KEY);
+    this.jiraTokenInput.nativeElement.value  = localStorage.getItem(JIRA_TOKEN_KEY);
   }
 
   setTogglToken(event: any) {
-    this.localStorage.setItem(TOGGL_TOKEN_KEY, event.target.value).subscribe(() => {});
+    localStorage.setItem(TOGGL_TOKEN_KEY, event.target.value)
   }
 
   setJiraToken(event: any) {
-    this.localStorage.setItem(JIRA_TOKEN_KEY, event.target.value).subscribe(() => {});
+    localStorage.setItem(JIRA_TOKEN_KEY, event.target.value)
   }
 
 }
