@@ -1,23 +1,17 @@
-<div >
+<div>
   <div class="row">
-    <div class="col-sm-6">
-      <div class="card bg-dark border-success mb-3" *ngFor="let timer of elements"
+    <div class="col-sm-12">
+      <div class="card bg-dark border-success mb-3" *ngFor="let summary of elements"
       >
-        <div class="card-body m-2">
-          <a data-target="#logs" data-toggle="collapse">{{timer.description}}</a>
+        <div class="card-body m-2" (click)="summary.collapsed = !summary.collapsed" >
+          <a data-target="#logs" data-toggle="collapse"><span class="font-weight-bold">{{summary.first.fields.summary}}</span> -
+            {{summary.first.key}}</a>
+          <div class="float-right text-muted">{{summary.first.fields.project.name}}</div>
+          <div>{{summary.summary}}</div>
+        </div>
+      </div>
 
-          <div class="float-right text-muted">{{timer.dur}}</div>
-          <div id="logs" class="collapse">testtesttest</div>
-        </div>
-      </div>
     </div>
-    <div class="col-sm-6">
-      <div class="card bg-dark border-success mb-3" *ngFor="let i of [1,2,3]">
-        <div class="card-body m-2">
-          Jira card {{i}}
-        </div>
-      </div>
-    </div>
+
   </div>
-
 </div>
